@@ -89,3 +89,18 @@ Decorators are composable. When building up a pipeline, order matters. The follo
 
 - *logging*: Prints log messages to the console whenever any lifecycle methods
   is called. This is useful to see when and why components are re-rendered.
+
+## Demo
+
+A sample app demonstrating the features is included in the repository. To try
+it:
+
+```shell
+cd demo
+boot dev
+# open http://localhost:3000 in your browser
+```
+
+## Author
+
+(c) 2017 Paulus Esterhazy
