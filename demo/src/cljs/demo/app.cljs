@@ -5,6 +5,7 @@
 (defn root []
   (-> (rc/component "lala")
       (rc/render (fn [] [:div "Hello world"]))
+      (rc/logging)
       rc/finalize))
 
 (defn init []

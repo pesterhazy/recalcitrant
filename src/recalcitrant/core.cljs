@@ -35,6 +35,17 @@ a new set of props is received. "
                (when (not= new-props (r/props this))
                  (init new-props))))))
 
+(def lifecycle-methods
+  [:get-initial-state
+   :component-will-receive-props
+   :should-component-update
+   :component-will-mount
+   :component-did-mount
+   :component-will-update
+   :component-did-update
+   :component-will-unmount
+   :reagent-render])
+
 (defn logging
   "Mixin that logs out component lifecycle events"
   [spec]
@@ -45,8 +56,7 @@ a new set of props is received. "
                                  (js/console.info (name ky))
                                  (when f (apply f args))))))
           spec
-          [:component-will-mount
-           :component-will-receive-props]))
+          lifecycle-methods))
 
 (defn finalize
   [spec]
