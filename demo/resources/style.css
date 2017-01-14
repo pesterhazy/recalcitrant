@@ -12,3 +12,12 @@ body {
 .btn-toolbar .btn:last-child{
     margin-right: 0;
 }
+
+.indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fef0fe;
+    width: 5rem;
+    height: 5rem;
+}
