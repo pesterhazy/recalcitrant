@@ -6,8 +6,8 @@
 (defonce !n (r/cursor !state [:n]))
 (defonce !hidden? (r/cursor !state [:hidden?]))
 
-(defn counter-ui* [{:keys [n]}]
-  [:div.rounded-circle.indicator
+(defn counter-ui* [{:keys [n hidden?]}]
+  [:div.rounded-circle.indicator {:class (if hidden? :hide :show)}
    [:div {:style {:font-size 40}} n]])
 
 (defn counter-ui []
@@ -24,8 +24,8 @@
       "inc"]
      [:button.btn.btn-secondary {:type "button" :on-click (fn [] (swap! !hidden? not))}
       "toggle"]]]
-   (when-not @!hidden?
-     [counter-ui {:n (or @!n 0)}])])
+   [counter-ui {:n (or @!n 0)
+                :hidden? @!hidden?}]])
 
 (defn init []
   (r/render-component (fn [] [rc/error-boundary [root]])
