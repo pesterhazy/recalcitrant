@@ -1,5 +1,6 @@
 (ns demo.app
   (:require [reagent.core :as r]
+            [weasel.repl :as repl]
             [recalcitrant.core :as rc]))
 
 (defonce !state (r/atom nil))
@@ -36,3 +37,10 @@
   (enable-console-print!)
   (r/render-component (fn [] [rc/error-boundary [root]])
                       (.getElementById js/document "container")))
+
+(defonce conn
+  (when-not (repl/alive?)
+    (repl/connect "ws://localhost:9001")))
+
+(if (repl/alive?)
+  (println "Loaded example"))

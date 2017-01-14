@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+boot with-cp --write -S compile -S runtime -S provided -S test --file cp.txt
+rlwrap java -cp $(cat cp.txt):src/cljs:../src clojure.main brepl.clj
