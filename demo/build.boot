@@ -1,15 +1,21 @@
+(defn ver []
+  (System/getenv "RECALCITRANT_RELEASE"))
+
 (set-env!
- :source-paths    #{"../src" "src/cljs"}
+ :source-paths    (if (ver)
+                    #{"src/cljs"}
+                    #{"../src" "src/cljs"})
  :resource-paths  #{"resources"}
- :dependencies '[[adzerk/boot-cljs          "1.7.228-2"  :scope "test"]
-                 [adzerk/boot-cljs-repl     "0.3.3"      :scope "test"]
-                 [adzerk/boot-reload        "0.4.13"      :scope "test"]
-                 [pandeiro/boot-http        "0.7.6"      :scope "test"]
-                 [com.cemerick/piggieback   "0.2.1"      :scope "test"]
-                 [org.clojure/tools.nrepl   "0.2.12"     :scope "test"]
-                 [weasel                    "0.7.0"      :scope "test"]
-                 [org.clojure/clojurescript "1.9.293"]
-                 [reagent "0.6.0"]])
+ :dependencies (cond-> '[[adzerk/boot-cljs          "1.7.228-2"  :scope "test"]
+                         [adzerk/boot-cljs-repl     "0.3.3"      :scope "test"]
+                         [adzerk/boot-reload        "0.4.13"      :scope "test"]
+                         [pandeiro/boot-http        "0.7.6"      :scope "test"]
+                         [com.cemerick/piggieback   "0.2.1"      :scope "test"]
+                         [org.clojure/tools.nrepl   "0.2.12"     :scope "test"]
+                         [weasel                    "0.7.0"      :scope "test"]
+                         [org.clojure/clojurescript "1.9.293"]
+                         [reagent "0.6.0"]]
+                 (ver) (conj ['recalcitrant/recalcitrant (ver)])))
 
 (require
  '[adzerk.boot-cljs      :refer [cljs]]
