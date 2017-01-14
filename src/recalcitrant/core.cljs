@@ -38,7 +38,7 @@ a new set of props is received. "
 (def lifecycle-methods
   [:get-initial-state
    :component-will-receive-props
-   :should-component-update
+   ;; :should-component-update
    :component-will-mount
    :component-did-mount
    :component-will-update
