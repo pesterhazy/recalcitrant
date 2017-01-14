@@ -7,7 +7,7 @@
 (defonce !hidden? (r/cursor !state [:hidden?]))
 
 (defn counter-ui* [{:keys [n hidden?]}]
-  [:div.rounded-circle.indicator {:class (if hidden? :hide :show)}
+  [:div.bg-info.text-white.rounded-circle.indicator {:class (if hidden? :hide :show)}
    [:div {:style {:font-size 40}} n]])
 
 (defn counter-ui []
