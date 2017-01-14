@@ -1,0 +1,35 @@
+body {
+    margin: 10px;
+}
+
+.control {
+    margin-bottom: 10px;
+}
+
+.btn-toolbar .btn{
+    margin-right: 5px;
+}
+.btn-toolbar .btn:last-child{
+    margin-right: 0;
+}
+
+.indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fef0fe;
+    width: 5rem;
+    height: 5rem;
+}
+
+.hide {
+    transition: 0.2s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.show {
+    transition: 0.2s;
+    opacity: 1;
+    visibility: visible;
+}

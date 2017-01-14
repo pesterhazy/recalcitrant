@@ -23,30 +23,48 @@
 (defn new-props
   "Initialization mixin
 
-Adds a callback that will be called on component creation as well as whenever
-a new set of props is received. "
+  Adds a callback that will be called on component creation as well as whenever
+  a new set of props is received. "
   [spec init]
   (-> spec
-      (assoc :component-will-mount
-             (fn [this]
-               (init (r/props this)))
-             :component-will-receive-props
-             (fn [this [_ new-props]]
-               (when (not= new-props (r/props this))
-                 (init new-props))))))
+      (update :component-will-mount
+              (fn [next]
+                (fn [this]
+                  (init (r/props this))
+                  (when next
+                    (next this)))))
+      (update :component-will-receive-props
+              (fn [next]
+                (fn [this [_ new-props :as v]]
+                  (when (not= new-props (r/props this))
+                    (init new-props))
+                  (when next
+                    (next this v)))))))
+
+(def lifecycle-methods
+  [
+   ;; :get-initial-state
+   :component-will-receive-props
+   ;; :should-component-update
+   :component-will-mount
+   :component-did-mount
+   :component-will-update
+   :component-did-update
+   :component-will-unmount
+   :reagent-render])
 
 (defn logging
   "Mixin that logs out component lifecycle events"
   [spec]
   (reduce (fn [m ky] (update m
                              ky
-                             (fn [f]
+                             (fn [next]
                                (fn [& args]
                                  (js/console.info (name ky))
-                                 (when f (apply f args))))))
+                                 (when next
+                                   (apply next args))))))
           spec
-          [:component-will-mount
-           :component-will-receive-props]))
+          lifecycle-methods))
 
 (defn finalize
   [spec]

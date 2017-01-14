@@ -1,1 +1,5 @@
-- add *did-mount*
+- try an example
+- add generic lifecycle method wrapper
+- make sure that fns can actually be composed
+- push to clojars
+- consider factoring out ui components
