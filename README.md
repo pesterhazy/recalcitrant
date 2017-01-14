@@ -2,7 +2,9 @@
 
 recalcitrant is a toolbox for building simple components in Reagent
 
-Note that this is pre-alpha code at best. Feedback is welcome!
+This is early stages. Expect the API to change. Early feedback is welcome!
+
+[![Clojars Project](https://img.shields.io/clojars/v/recalcitrant.svg)](https://clojars.org/recalcitrant)
 
 ## Motivation
 
@@ -101,6 +103,8 @@ boot dev
 # open http://localhost:3000 in your browser
 ```
 
-## Author
+## License
 
 (c) 2017 Paulus Esterhazy
+
+This project is licensed under the terms of the MIT license.
