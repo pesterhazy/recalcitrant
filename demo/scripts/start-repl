@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
 
-boot with-cp --write -S compile -S runtime -S provided -S test --file cp.txt
+if [ -e cp.txt ]; then
+    echo "Using exisiting cp.txt."
+else
+    echo "Creating cp.txt..."
+    boot with-cp --write -S compile -S runtime -S provided -S test --file cp.txt
+fi
+echo "Running brepl.clj..."
 rlwrap java -cp $(cat cp.txt):src/cljs:../src clojure.main brepl.clj
