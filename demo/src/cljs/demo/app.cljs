@@ -25,11 +25,12 @@
 (defn root []
   [:div
    [:div.control
-    [:button {:on-click (fn [] (swap! !n #(inc (or % 0))))}
-     "inc"]
-    [:button {:on-click (fn [] (swap! !hidden? not))}
-     "toggle"]]
-   (when @!hidden?
+    [:div.btn-toolbar
+     [:button.btn.btn-primary {:on-click (fn [] (swap! !n #(inc (or % 0))))}
+      "inc"]
+     [:button.btn.btn-secondary {:type "button" :on-click (fn [] (swap! !hidden? not))}
+      "toggle"]]]
+   (when-not @!hidden?
      [counter-ui {:n (or @!n 0)}])])
 
 (defn init []

@@ -5,3 +5,10 @@ body {
 .control {
     margin-bottom: 10px;
 }
+
+.btn-toolbar .btn{
+    margin-right: 5px;
+}
+.btn-toolbar .btn:last-child{
+    margin-right: 0;
+}
