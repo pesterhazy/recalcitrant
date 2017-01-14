@@ -1,5 +1,5 @@
 (set-env!
- :source-paths    #{"src/cljs"}
+ :source-paths    #{"../src" "src/cljs"}
  :resource-paths  #{"resources"}
  :dependencies '[[adzerk/boot-cljs          "1.7.228-2"  :scope "test"]
                  [adzerk/boot-cljs-repl     "0.3.3"      :scope "test"]
@@ -19,7 +19,6 @@
 
 (deftask build []
   (comp (speak)
-        
         (cljs)
         ))
 

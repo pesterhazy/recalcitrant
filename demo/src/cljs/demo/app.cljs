@@ -1,18 +1,12 @@
 (ns demo.app
-  (:require [reagent.core :as reagent :refer [atom]]))
+  (:require [reagent.core :as reagent :refer [atom]]
+            [recalcitrant.core :as rc]))
 
-(defn some-component []
-  [:div
-   [:h3 "I am a component!"]
-   [:p.someclass
-    "I have " [:strong "bold"]
-    [:span {:style {:color "red"}} " and red"]
-    " text."]])
-
-(defn calling-component []
-  [:div "Parent component"
-   [some-component]])
+(defn root []
+  (-> (rc/component "lala")
+      (rc/render (fn [] [:div "Hello world"]))
+      rc/finalize))
 
 (defn init []
-  (reagent/render-component [calling-component]
+  (reagent/render-component (fn [] [rc/error-boundary [root]])
                             (.getElementById js/document "container")))
