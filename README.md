@@ -48,7 +48,7 @@ guarantee that error boundaries will continue to work in future versions of Reac
 ## Buidling Components with Lifecyle Methods
 
 Building components with Lifecycle methods in Reagent can be tedious.
-Recalcitrant offers an alternativ way to constructs components by decorating a
+Recalcitrant offers an alternativ way to construct components by decorating a
 render method with lifecyce methods.
 
 ```clojure
