@@ -2,7 +2,7 @@
 
 recalcitrant is a toolbox for building simple components in Reagent
 
-This is early stages. Expect the API to change. Early feedback is welcome!
+This project is in its early stages so expect the API to change. Feedback is welcome!
 
 [![Clojars Project](https://img.shields.io/clojars/v/recalcitrant.svg)](https://clojars.org/recalcitrant)
 
