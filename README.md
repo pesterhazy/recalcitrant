@@ -34,9 +34,12 @@ component:
 (defn root []
   (assert false "Oops"))
 
-(r/render-component (fn [] [error-boundary [root]])
+;; note the way we are invoking the component
+(r/render [(fn [] [error-boundary [root]])]
                     (.. js/document (querySelector \"#container\")))
 ```
+
+What we are passing to r/render is an anonymous function wrapped in a vector. The reason for this convoluted way of invoking the component is a reagent oddity preventing the reliable reloading of a root component.
 
 The component will catch the exception and print it to the console. The tree
 containing the exception will not be rendered. If the tree is rerendered after

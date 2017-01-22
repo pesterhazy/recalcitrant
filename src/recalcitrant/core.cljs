@@ -86,9 +86,13 @@
   Example usage:
 
   (ns my-ns
-    (:require [error-boundary.error-boundary :refer [error-boundary]]))
+    (:require [recalcitrant.core :refer [error-boundary]]))
 
-  (r/render-component (fn [] [error-boundary [root]])
+  (defn root []
+    (assert false \"Oops\"))
+
+  ;; note the way we are invoking the component
+  (r/render [(fn [] [error-boundary [root]])]
                       (.. js/document (querySelector \"#container\")))
 
   Note that this relies on the undocumented unstable_handleError API introduced
