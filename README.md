@@ -29,7 +29,7 @@ component:
 
 ```clojure
 (ns my-ns
-  (:require [recalcitrant.tools :refer [error-boundary]]))
+  (:require [recalcitrant.core :refer [error-boundary]]))
 
 (defn root []
   (assert false "Oops"))
