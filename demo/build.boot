@@ -51,4 +51,12 @@
   (comp (development)
         (run)))
 
-
+(deftask brepl
+  []
+  (with-pass-thru _
+    (require 'clojure.java.shell)
+    (require 'cljs.repl)
+    (require 'weasel.repl.websocket)
+    ((resolve 'clojure.java.shell/sh) "open" "--background" "index.html")
+    ((resolve 'cljs.repl/repl) ((resolve 'weasel.repl.websocket/repl-env))
+     :output-dir "out")))
