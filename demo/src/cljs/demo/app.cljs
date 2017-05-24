@@ -15,7 +15,8 @@
   (-> (rc/component "lala")
       (rc/render counter-ui*)
       (rc/logging)
-      (rc/new-props (fn [m] (prn m)))
+      (rc/new-props (fn [m] (prn [:new-props m])))
+      (rc/on :component-will-unmount (fn [m] (prn [:unmount m])))
       rc/finalize))
 
 (defn root []

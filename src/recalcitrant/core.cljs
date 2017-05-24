@@ -20,6 +20,10 @@
   (-> spec
       (assoc :reagent-render f)))
 
+(defn on [spec meth f]
+  (-> spec
+      (assoc meth f)))
+
 (defn new-props
   "Initialization mixin
 
