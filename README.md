@@ -17,6 +17,16 @@ Overall Reagent is a pleasure to use. But some tasks can seem unnecessarily comp
 This library aims to provide abstractions and Higher Level Components to make
 common Reagent tasks simpler.
 
+## Changelog
+
+- 0.1.1
+
+  Add `on` method to register other lifecycle methods
+
+- 0.1.0
+
+  Initial release
+
 ## Error Handling
 
 Like React, Reagent does not
