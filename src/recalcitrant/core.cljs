@@ -5,6 +5,12 @@
             [reagent.debug :refer-macros [dev?]]
             [goog.object :as gobj]))
 
+(defn render-identity []
+  (let [children (r/children (r/current-component))]
+    (assert (= 1 (count children))
+            "Wrapper must have exactly one child component")
+    (first children)))
+
 (defn component
   "Component constructor
 
@@ -19,6 +25,10 @@
 (defn render [spec f]
   (-> spec
       (assoc :reagent-render f)))
+
+(defn pass-through [spec]
+  (-> spec
+      (assoc :reagent-render render-identity)))
 
 (defn on [spec meth f]
   (-> spec
